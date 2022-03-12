@@ -1,5 +1,6 @@
 package controller;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,15 +14,23 @@ public class testController extends HttpServlet {
 	}
 //	@Override
 //	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.setCharacterEncoding("UTF-8"); 
+//		request.setCharacterEncoding("UTF-8");
+//		response.setCharacterEncoding("UTF-8");
 //		System.out.println("Get process");
 //	}
 //	@Override
 //	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.setCharacterEncoding("UTF-8"); 
+//		request.setCharacterEncoding("UTF-8");
+//		response.setCharacterEncoding("UTF-8"); 
 //		System.out.println("Post process");
 //	}			
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("service process");
+    	request.setCharacterEncoding("UTF-8");
+    	response.setCharacterEncoding("big5"); 
+    	String name = request.getParameter("name");
+    	String password = request.getParameter("password");    	
+    	PrintWriter out = response.getWriter();
+    	out.printf("name: %s, password: %s", name, password);    	
+    	System.out.println("service process");
 	}
 }
