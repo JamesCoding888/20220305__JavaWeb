@@ -26,7 +26,7 @@ public class testController extends HttpServlet {
 //	}			
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setCharacterEncoding("UTF-8");
-    	response.setCharacterEncoding("big5"); 
+    	response.setCharacterEncoding("BIG5"); 
     	String name = request.getParameter("name");
     	String password = request.getParameter("password");    	
     	PrintWriter out = response.getWriter();
