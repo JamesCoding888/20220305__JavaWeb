@@ -1,5 +1,5 @@
 package dao;
-import java.sql.Connection;
+import java.sql.Connection;   
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ public class studentDao implements implDao {
 		System.out.println(new studentDao().query());
 		System.out.println(new studentDao().query(20));		
 	}
-
+	// 新增
 	@Override
 	public void add(String name, Integer chi, Integer eng, Integer sum) {
 		Connection conn = implDao.getDB();
@@ -56,7 +56,7 @@ public class studentDao implements implDao {
 			e.printStackTrace();
 		}				
 	}
-
+	// 查詢
 	@Override
 	public String query() {
 		Connection conn = implDao.getDB();
@@ -65,12 +65,22 @@ public class studentDao implements implDao {
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
+			/*
 			while(rs.next()) {
 				show=show + rs.getInt("id") +"\t"
 						  + rs.getString("name") +"\t"
 						  + rs.getString("chi") +"\t"
 						  + rs.getString("eng") +"\t"
 						  + rs.getString("sum")+"\n";
+			}
+			*/
+			// for queryAll.jsp
+			while(rs.next()) {
+				show=show + "<tr><td>" + rs.getInt("id") +"<td>"
+						  + rs.getString("name") +"<td>"
+						  + rs.getString("chi") +"<td>"
+						  + rs.getString("eng") +"<td>"
+						  + rs.getString("sum");
 			}
 		} catch (SQLException e) {
 			System.out.println("no connection");
@@ -88,6 +98,7 @@ public class studentDao implements implDao {
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setInt(1, id);			
 			ResultSet rs=ps.executeQuery();			
+			/*
 			while(rs.next())
 			{
 				show=show + rs.getInt("id") +"\t"
@@ -95,11 +106,79 @@ public class studentDao implements implDao {
 						  + rs.getString("chi") +"\t"
 						  + rs.getString("eng") +"\t"
 						  + rs.getString("sum")+"\n";
-			}	
+			}
+			*/
+			// for queryId.jsp
+			while(rs.next())
+			{
+				show=show + "<tr><td>" + rs.getInt("id") +"<td>"
+						  + rs.getString("name") +"<td>"
+						  + rs.getString("chi") +"<td>"
+						  + rs.getString("eng") +"<td>"
+						  + rs.getString("sum");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}				
 		return show;
+	}
+	
+	@Override
+	public Object queryId(int id) {
+		Connection conn=implDao.getDB();
+		String SQL="select * from student  where id=?";
+		student s=null;		
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setInt(1,id);
+			ResultSet rs=ps.executeQuery();
+			
+			if(rs.next())
+			{
+				s=new student();
+				s.setId(rs.getInt("id"));
+				s.setName(rs.getString("name"));
+				s.setChi(rs.getString("chi"));
+				s.setEng(rs.getString("eng"));
+				s.setSum(rs.getString("sum"));
+			}		
+			
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		}
+		return s;
+	}	
+	// 修改
+		@Override
+		public void update(Object o) {
+			Connection conn = implDao.getDB();
+			String sql = "update school.student set name=?, chi=?, eng=?, sum=? where id=? ";
+			student s = (student)o;
+			try {
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setString(1, s.getName());
+				ps.setString(2, s.getChi());
+				ps.setString(3, s.getEng());
+				ps.setString(4, s.getSum());
+				ps.setInt(5, s.getId());					
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+	// 刪除
+	@Override
+	public void delete(int id) {
+		Connection conn = implDao.getDB();
+		String sql = "delete from student where id=?";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
