@@ -173,3 +173,9 @@ Maven Dependencies:
 
 MySQL Database:
 - mysql-connector-java-5.1.49
+
+-----------------------------------------------------------------------------------------------
+專案: 
+1. 會員管理系統 
+refer to the following link:
+https://github.com/JamesCoding888/20220305_JavaWeb_company
