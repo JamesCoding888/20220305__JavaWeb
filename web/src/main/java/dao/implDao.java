@@ -1,12 +1,11 @@
 package dao;
-import java.sql.Connection; 
+import java.sql.Connection;  
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import controller.updateEx;
 public interface implDao {
-	// 連線方法
+	// 連線方法 限 jdk8 以上
 	static Connection getDB() {
-		String url = "jdbc:mysql://localhost:3307/school";
+		String url = "jdbc:mysql://localhost:3307/school?useUnicode=true&characterEncoding=utf-8";// 修改中文問題 ?useUnicode=true&characterEncoding=utf-8 
 		String user = "root";
 		String password = "1234";
 		Connection conn = null;

@@ -1,5 +1,5 @@
 package controller;
-import java.io.IOException;
+import java.io.IOException; 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +18,7 @@ public class addController extends HttpServlet {
 		 *4.response-->換頁
 		 * 
 		 */
+		req.setCharacterEncoding("utf-8"); // 修改中文問題
 		String name = req.getParameter("name");
 		String chi = req.getParameter("chi");
 		String eng = req.getParameter("eng");
