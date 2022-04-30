@@ -178,3 +178,9 @@ MySQL Database:
 1. 會員管理系統 
 refer to the following link:
 https://github.com/JamesCoding888/20220305_JavaWeb_company
+
+2. Hibernate 專案
+   https://github.com/JamesCoding888/20220423_JavaWeb_company2_JPA
+
+3. Maven project with Hibernate
+   TBD
