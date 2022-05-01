@@ -175,10 +175,40 @@ Maven Dependencies:
 MySQL Database:
 - mysql-connector-java-5.1.49
 -----------------------------------------------------------------------------------------------
+
+
+
 專案: 
-1. 會員管理系統 
+1.
+20220305
+- JDK
+- Eclipse EE
+- Tomcat Server 
+- cmd command 
+- TCP-IP 
+- HTML
+
+20220312
+- Tomcat 
+- Servlet 
+- Http 
+- Web.xml 與 @annotation 
+- <servlet-mapping> 
+- MySQL
+
+20220319
+- SQL 語法 
+- CRUD 
+- Create 新增
+
+20220326
+- Query 建置 
+- Update 建置
+
+  
+2. 會員管理系統 
 refer to the following link:
 https://github.com/JamesCoding888/20220305_JavaWeb_company
 
-2. Maven project with ORM Hibernate
+3. Maven project with ORM Hibernate
    https://github.com/JamesCoding888/20220423_JavaWeb_company2_JPA
