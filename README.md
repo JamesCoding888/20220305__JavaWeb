@@ -179,8 +179,5 @@ MySQL Database:
 refer to the following link:
 https://github.com/JamesCoding888/20220305_JavaWeb_company
 
-2. Hibernate 專案
-   https://github.com/JamesCoding888/20220423_JavaWeb_company2_JPA
-
-3. Maven project with ORM Hibernate
+2. Maven project with ORM Hibernate
    https://github.com/JamesCoding888/20220423_JavaWeb_company2_JPA
